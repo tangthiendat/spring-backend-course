@@ -8,12 +8,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ProjectConfig {
 
-    @Bean
-    public Vehicle vehicle() {
-        Vehicle vehicle = new Vehicle();
-        vehicle.setVehicleName("BMW");
-        return vehicle;
-    }
+//    @Bean
+//    public Vehicle vehicle() {
+//        Vehicle vehicle = new Vehicle();
+//        vehicle.setVehicleName("BMW");
+//        return vehicle;
+//    }
 //
 //    @Bean
 //    public Person person(Vehicle vehicle) {
