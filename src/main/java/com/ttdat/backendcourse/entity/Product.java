@@ -26,7 +26,6 @@ public class Product {
     private BigDecimal price;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(255) DEFAULT 'AVAILABLE'")
     private ProductStatus productStatus;
 
     @PrePersist

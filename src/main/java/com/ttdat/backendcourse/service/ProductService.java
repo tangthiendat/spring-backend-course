@@ -3,6 +3,7 @@ package com.ttdat.backendcourse.service;
 import com.ttdat.backendcourse.dto.ProductDTO;
 import com.ttdat.backendcourse.entity.Product;
 import com.ttdat.backendcourse.entity.ProductStatus;
+import com.ttdat.backendcourse.exception.ResourceNotFoundException;
 import com.ttdat.backendcourse.mapper.ProductMapper;
 import com.ttdat.backendcourse.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -47,13 +48,13 @@ public class ProductService {
                     oldProduct.setProductStatus(ProductStatus.valueOf(productDTO.getProductStatus()));
                     return oldProduct;
                 })
-                .orElseThrow(() -> new RuntimeException("Product not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + id));
         return productMapper.toProductDTO(productRepository.save(updatedProduct));
     }
 
     public void deleteProduct(UUID id) {
         Product product = productRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Product not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + id));
         productRepository.delete(product);
     }
 }
