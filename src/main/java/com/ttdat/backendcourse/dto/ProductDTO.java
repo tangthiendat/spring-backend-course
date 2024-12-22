@@ -7,6 +7,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -24,4 +25,5 @@ public class ProductDTO {
     BigDecimal price;
     String productStatus;
     ProductTypeDTO productType;
+    List<ColorDTO> colors;
 }

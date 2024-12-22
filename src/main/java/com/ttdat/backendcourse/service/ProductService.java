@@ -39,15 +39,10 @@ public class ProductService {
 
     @Transactional
     public ProductDTO updateProduct(UUID id, ProductDTO productDTO) {
-        Product updatedProduct = productRepository.findById(id)
-                .map(oldProduct -> {
-                    oldProduct.setProductName(productDTO.getProductName());
-                    oldProduct.setPrice(productDTO.getPrice());
-                    oldProduct.setProductStatus(ProductStatus.valueOf(productDTO.getProductStatus()));
-                    return oldProduct;
-                })
+        Product product = productRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + id));
-        return productMapper.toProductDTO(productRepository.save(updatedProduct));
+        productMapper.updateProductFromDTO(productDTO, product);
+        return productMapper.toProductDTO(productRepository.save(product));
     }
 
     public void deleteProduct(UUID id) {

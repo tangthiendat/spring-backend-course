@@ -12,3 +12,13 @@ VALUES ('Iphone 15', 20000000, 'OUT_OF_STOCK', 1),
        ('Xiaomi Redmi Note 10', 5000000, 'AVAILABLE', 1),
        ('Asus TUF Gaming F15', 15000000, 'AVAILABLE', 2),
        ('Macbook Pro M3', 27000000, 'AVAILABLE', 2);
+
+ALTER TABLE public.colors
+    ALTER COLUMN color_id SET DEFAULT nextval('color_id_seq');
+
+INSERT INTO public.colors(color_name)
+VALUES ('Black'),
+       ('White'),
+       ('Red'),
+       ('Blue'),
+       ('Green');

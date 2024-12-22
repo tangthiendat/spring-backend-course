@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -31,6 +32,14 @@ public class Product extends BaseEntity{
     @ManyToOne
     @JoinColumn(name = "product_type_id", referencedColumnName = "productTypeId")
     private ProductType productType;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "product_colors",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "color_id")
+    )
+    private List<Color> colors;
 
     @PrePersist
     public void prePersist() {
