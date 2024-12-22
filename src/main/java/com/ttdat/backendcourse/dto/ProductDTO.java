@@ -23,4 +23,5 @@ public class ProductDTO {
     @Min(value = 0, message = "Price must be greater than 0")
     BigDecimal price;
     String productStatus;
+    ProductTypeDTO productType;
 }

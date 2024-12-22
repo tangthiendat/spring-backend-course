@@ -28,6 +28,10 @@ public class Product extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private ProductStatus productStatus;
 
+    @ManyToOne
+    @JoinColumn(name = "product_type_id", referencedColumnName = "productTypeId")
+    private ProductType productType;
+
     @PrePersist
     public void prePersist() {
         //set default product status

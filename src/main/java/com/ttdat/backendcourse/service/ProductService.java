@@ -20,8 +20,6 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final ProductMapper productMapper;
 
-//    @Modifying
-    @Transactional
     public ProductDTO createProduct(ProductDTO productDTO) {
         Product product = productMapper.toProduct(productDTO);
         return productMapper.toProductDTO(productRepository.save(product));
