@@ -5,7 +5,7 @@ import com.ttdat.backendcourse.entity.Product;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 
-@Mapper(componentModel = "spring", uses = {ProductTypeMapper.class})
+@Mapper(componentModel = "spring", uses = {ProductTypeMapper.class, ColorMapper.class})
 public interface ProductMapper {
     Product toProduct(ProductDTO productDTO);
     ProductDTO toProductDTO(Product product);
